@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
   const navigate = useNavigate()
@@ -23,6 +23,10 @@ function Login() {
         >
           Hyr
         </button>
+        <p className="text-sm text-gray-600 mt-4 text-center">
+          Nuk ke llogari?{' '}
+          <Link to="/register" className="text-blue-700 hover:underline">Regjistrohu</Link>
+        </p>
       </div>
     </div>
   )
