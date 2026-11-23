@@ -4,7 +4,7 @@ function Login() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen bg-blue-50 flex items-center justify-center">
+    <div className="min-h-[calc(100vh-4rem)] bg-blue-50 flex items-center justify-center">
       <div className="bg-white p-8 rounded-xl shadow w-full max-w-sm">
         <h1 className="text-2xl font-bold text-blue-700 mb-6">Hyr në llogari</h1>
         <input

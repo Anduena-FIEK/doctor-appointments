@@ -6,7 +6,7 @@ const doctors = [
 
 function Doctors() {
   return (
-    <div className="min-h-screen bg-blue-50 p-8">
+    <div className="min-h-[calc(100vh-4rem)] bg-blue-50 p-8">
       <h1 className="text-3xl font-bold text-blue-700 mb-6">Doktorët</h1>
       <div className="grid gap-4 md:grid-cols-3">
         {doctors.map((doctor) => (

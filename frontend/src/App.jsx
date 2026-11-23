@@ -1,13 +1,17 @@
 import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
 import Login from './pages/Login'
 import Doctors from './pages/Doctors'
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/doctors" element={<Doctors />} />
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/doctors" element={<Doctors />} />
+      </Routes>
+    </>
   )
 }
 
