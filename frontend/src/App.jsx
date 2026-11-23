@@ -1,8 +1,13 @@
+import { Routes, Route } from 'react-router-dom'
+import Login from './pages/Login'
+import Doctors from './pages/Doctors'
+
 function App() {
   return (
-    <div className="min-h-screen bg-blue-50 flex items-center justify-center">
-      <h1 className="text-3xl font-bold text-blue-700">Doctor Appointments</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/doctors" element={<Doctors />} />
+    </Routes>
   )
 }
 
