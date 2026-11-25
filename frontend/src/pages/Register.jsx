@@ -14,13 +14,14 @@ function Register() {
     consent: false,
   })
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
     setForm({ ...form, [name]: type === 'checkbox' ? checked : value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (form.password.length < 8) {
       setError('Fjalëkalimi duhet të ketë të paktën 8 karaktere.')
@@ -34,8 +35,32 @@ function Register() {
       setError('Duhet të pranosh përpunimin e të dhënave.')
       return
     }
+
     setError('')
-    navigate('/')
+    setLoading(true)
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          city: form.city,
+          password: form.password,
+          consent: form.consent,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setError(data.message || 'Gabim gjatë regjistrimit.')
+        return
+      }
+      navigate('/')
+    } catch {
+      setError('Serveri nuk përgjigjet. Provo përsëri.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -104,8 +129,12 @@ function Register() {
 
         {error && <p className="text-red-600 text-sm mb-3">{error}</p>}
 
-        <button type="submit" className="w-full bg-blue-700 text-white rounded-lg p-2 hover:bg-blue-800">
-          Regjistrohu
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-700 text-white rounded-lg p-2 hover:bg-blue-800 disabled:opacity-50"
+        >
+          {loading ? 'Duke u regjistruar...' : 'Regjistrohu'}
         </button>
 
         <p className="text-sm text-gray-600 mt-4 text-center">
