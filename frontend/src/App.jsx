@@ -4,6 +4,8 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Login from './pages/Login'
 import Doctors from './pages/Doctors'
 import Register from './pages/Register'
+import Book from './pages/Book'
+import MyAppointments from './pages/MyAppointments'
 
 function App() {
   return (
@@ -12,14 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/doctors"
-          element={
-            <ProtectedRoute>
-              <Doctors />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/doctors" element={<ProtectedRoute><Doctors /></ProtectedRoute>} />
+        <Route path="/book/:doctorId" element={<ProtectedRoute><Book /></ProtectedRoute>} />
+        <Route path="/appointments" element={<ProtectedRoute><MyAppointments /></ProtectedRoute>} />
       </Routes>
     </>
   )

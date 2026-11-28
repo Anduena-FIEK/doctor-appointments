@@ -19,6 +19,7 @@ function Navbar() {
         {token ? (
           <>
             <Link to="/doctors" className="text-gray-700 hover:text-blue-700">Doktorët</Link>
+            <Link to="/appointments" className="text-gray-700 hover:text-blue-700">Terminet e mia</Link>
             <span className="text-sm text-gray-500">{user?.name}</span>
             <button onClick={handleLogout} className="text-gray-700 hover:text-blue-700">
               Dil
